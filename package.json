@@ -1,0 +1,40 @@
+{
+  "name": "@keystonejs/example-projects-starter",
+  "description": "An example KeystoneJS project with a User list and Authentication.",
+  "private": true,
+  "version": "5.0.14",
+  "author": "The KeystoneJS Development Team",
+  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/create-keystone-app/example-projects/starter",
+  "homepage": "https://github.com/keystonejs/keystone",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true NODE_OPTIONS='-r esm' keystone dev",
+    "build": "cross-env NODE_ENV=production keystone build",
+    "start": "cross-env NODE_ENV=production keystone start",
+    "create-tables": "cross-env CREATE_TABLES=true keystone create-tables"
+  },
+  "dependencies": {
+    "@keystonejs/adapter-mongoose": "^9.0.1",
+    "@keystonejs/app-admin-ui": "^7.3.0",
+    "@keystonejs/app-graphql": "^6.1.0",
+    "@keystonejs/app-next": "^5.1.2",
+    "@keystonejs/auth-password": "^5.1.13",
+    "@keystonejs/build-field-types": "^5.2.5",
+    "@keystonejs/fields": "^16.0.0",
+    "@keystonejs/fields-cloudinary-image": "^1.0.1",
+    "@keystonejs/fields-wysiwyg-tinymce": "^5.2.5",
+    "@keystonejs/file-adapters": "^6.0.1",
+    "@keystonejs/keystone": "^13.1.0",
+    "@keystonejs/list-plugins": "^5.2.0",
+    "apollo-server-express": "^2.16.1",
+    "cross-env": "^7.0.0",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "graphql": "^14.6.0",
+    "graphql-fields": "^2.0.3",
+    "graphql-tag": "^2.11.0"
+  }
+}
