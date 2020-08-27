@@ -24,6 +24,7 @@ export default {
     },
     meals: { type: Relationship, ref: "Meal.author", many: true },
     groceryList: { type: Relationship, ref: "GroceryList.author", many: true },
+    mealList: { type: Relationship, ref: "MealList.author", many: true },
     madeMeals: {type: Relationship, ref: "MadeMeal.author", many: true}
   },
 

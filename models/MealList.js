@@ -3,6 +3,7 @@ import { Relationship, Checkbox, DateTime } from "@keystonejs/fields";
 export default {
   fields: {
     meal: { type: Relationship, ref: "Meal", many: false },
+    author: { type: Relationship, ref: "User.mealList", many: false },
     isCompleted: { type: Checkbox, defaultValue: false },
     dateCompleted: {
       type: DateTime,
