@@ -6,4 +6,5 @@ import { Relationship } from "@keystonejs/fields";
         amount: { type: Relationship, ref: "Amount", many: false },
         meal: { type: Relationship, ref: "Meal.ingredientList", many: true}
       },
+      
   }

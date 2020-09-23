@@ -60,6 +60,10 @@ keystone.extendGraphQLSchema({
       schema: 'addGroceryList(ingredient: String!, amount: String!): GroceryList',
       resolver: mutations.addGroceryList
     },
+    {
+      schema: 'addMealToGroceryList(mealId: ID!): GroceryList',
+      resolver: mutations.addMealToGroceryList
+    },
   ],
 })
 

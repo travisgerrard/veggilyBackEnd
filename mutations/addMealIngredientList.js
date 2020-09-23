@@ -1,11 +1,11 @@
 import { gql } from "apollo-server-express";
 
 export async function addMealIngredientList(parent, args, context, info) {
-//   1. Make sure they are signed in
-    const { id: userId } = context.authedItem;
-    if (!userId) {
-      throw new Error("You must be signed in soooon");
-    }
+  //   1. Make sure they are signed in
+  const { id: userId } = context.authedItem;
+  if (!userId) {
+    throw new Error("You must be signed in soooon");
+  }
 
   args.ingredient = args.ingredient.toLowerCase().trim();
   args.amount = args.amount.toLowerCase().trim();
@@ -105,9 +105,6 @@ export async function addMealIngredientList(parent, args, context, info) {
     amount = createAmount;
   }
 
-  console.log(ingredient);
-  console.log(amount);
-
   //create meal ingredient list!
   const {
     data: { createMealIngredientList },
@@ -126,6 +123,14 @@ export async function addMealIngredientList(parent, args, context, info) {
           }
         ) {
           id
+          ingredient {
+            id
+            name
+          }
+          amount {
+            id
+            name
+          }
         }
       }
     `,
@@ -136,5 +141,7 @@ export async function addMealIngredientList(parent, args, context, info) {
     },
   });
 
-  return createMealIngredientList;
+  console.log(createMealIngredientList);
+
+  return createMealIngredientList
 }
