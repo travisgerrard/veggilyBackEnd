@@ -19,7 +19,7 @@ import MadeMeal from './models/MadeMeal'
 import * as mutations from './mutations';
 
 const PROJECT_NAME = "vegMeal";
-const adapterConfig = { mongoUri: "mongodb://localhost/veg-meal" };
+const adapterConfig = { mongoUri: process.env.DATABASE };
 
 const keystone = new Keystone({
   name: PROJECT_NAME,
