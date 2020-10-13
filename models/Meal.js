@@ -36,10 +36,10 @@ export default {
       many: true,
     },
   },
-  access: {
-    create: true,
-    read: true,
-    update: userCanUpdateItem,
-    delete: userIsAdminOrOwner,
-  },
+//  access: {
+//    create: true,
+//    read: true,
+//    update: userCanUpdateItem,
+//    delete: userIsAdminOrOwner,
+//  },
 };
