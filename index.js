@@ -4,7 +4,10 @@ import Auth from '@keystonejs/auth-password';
 import { GraphQLApp } from '@keystonejs/app-graphql';
 import { AdminUIApp } from '@keystonejs/app-admin-ui';
 import { MongooseAdapter as Adapter } from '@keystonejs/adapter-mongoose';
-import { createItems } from '@keystonejs/server-side-graphql-client';
+import expressSession from 'express-session';
+import MongoStoreMaker from 'connect-mongo';
+
+// import { createItems } from '@keystonejs/server-side-graphql-client';
 
 import User from './models/User';
 import Meal from './models/Meal';
@@ -16,6 +19,8 @@ import MealList from './models/MealList';
 import MadeMeal from './models/MadeMeal';
 import * as mutations from './mutations';
 
+const MongoStore = MongoStoreMaker(expressSession);
+
 const PROJECT_NAME = 'vegMeal';
 const adapterConfig = { mongoUri: process.env.DATABASE };
 
@@ -23,6 +28,8 @@ const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(adapterConfig),
   cookieSecret: 'travisgerrard',
+  sessionStore: new MongoStore({ url: process.env.DATABASE }),
+
   // onConnect: async (keystone) => {
   //   await createItems({
   //     keystone,

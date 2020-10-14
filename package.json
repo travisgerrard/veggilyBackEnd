@@ -34,9 +34,11 @@
     "@keystonejs/keystone": "*",
     "@keystonejs/session": "*",
     "apollo-server-express": "*",
+    "connect-mongo": "^3.2.0",
     "cross-env": "*",
     "dotenv": "*",
-    "esm": "*"
+    "esm": "*",
+    "express-session": "^1.17.1"
   },
   "resolutions": {
     "graphql-upload": "^10.0.0"
