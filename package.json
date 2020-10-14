@@ -11,7 +11,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development DISABLE_LOGGING=false NODE_OPTIONS='-r esm' keystone dev -p 3001",
+    "dev": "cross-env NODE_ENV=development DISABLE_LOGGING=false NODE_OPTIONS='-r esm' keystone dev -p 3000",
     "build": "cross-env NODE_ENV=production keystone build",
     "start": "cross-env NODE_ENV=production keystone start",
     "create-tables": "cross-env CREATE_TABLES=true keystone create-tables",
@@ -37,5 +37,8 @@
     "cross-env": "*",
     "dotenv": "*",
     "esm": "*"
+  },
+  "resolutions": {
+    "graphql-upload": "^10.0.0"
   }
 }

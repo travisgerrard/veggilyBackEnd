@@ -1,5 +1,11 @@
-import { Text, Password, Checkbox, Relationship,Select } from "@keystonejs/fields";
-import { userIsAdmin, userCanAccessUsers } from "../utils/access";
+import {
+  Text,
+  Password,
+  Checkbox,
+  Relationship,
+  Select,
+} from '@keystonejs/fields';
+import { userIsAdmin, userCanAccessUsers } from '../utils/access';
 
 export default {
   fields: {
@@ -12,20 +18,19 @@ export default {
       type: Checkbox,
       // Field-level access controls
       // Here, we set more restrictive field access so a non-admin cannot make themselves admin.
-   
     },
     permissions: {
-        type: Select,
-        defaultValue: 'USER',
-        options: ['ADMIN', 'EDITOR', 'USER'],
-      },
+      type: Select,
+      defaultValue: 'USER',
+      options: ['ADMIN', 'EDITOR', 'USER'],
+    },
     password: {
       type: Password,
     },
-    meals: { type: Relationship, ref: "Meal.author", many: true },
-    groceryList: { type: Relationship, ref: "GroceryList.author", many: true },
-    mealList: { type: Relationship, ref: "MealList.author", many: true },
-    madeMeals: {type: Relationship, ref: "MadeMeal.author", many: true}
+    meals: { type: Relationship, ref: 'Meal.author', many: true },
+    groceryList: { type: Relationship, ref: 'GroceryList.author', many: true },
+    mealList: { type: Relationship, ref: 'MealList.author', many: true },
+    madeMeals: { type: Relationship, ref: 'MadeMeal.author', many: true },
   },
 
   access: {
