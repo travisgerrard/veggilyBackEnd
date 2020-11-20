@@ -12,8 +12,8 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true NODE_OPTIONS='-r esm' keystone dev -p 3000",
-    "build": "cross-env NODE_ENV=production NODE_OPTIONS='-r esm' keystone build",
-    "start": "cross-env NODE_ENV=production keystone start",
+    "build": "cross-env NODE_ENV=production NODE_OPTIONS='-r esm' keystone build -p 3001",
+    "start": "cross-env NODE_ENV=production NODE_OPTIONS='-r esm' keystone start -p 3001",
     "create-tables": "cross-env CREATE_TABLES=true keystone create-tables",
     "update:packages": "node wipe-dependencies.js && rm -rf node_modules && npm update --save-dev && npm update --save"
   },
