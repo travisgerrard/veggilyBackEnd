@@ -21,12 +21,15 @@ import * as mutations from './mutations';
 
 const MongoStore = MongoStoreMaker(expressSession);
 
-const PROJECT_NAME = 'vegMeal';
+const PROJECT_NAME = 'veggily';
+console.log('TRYING TO CONNECT TO THE DB', process.env.DATABASE);
+
 const adapterConfig = { mongoUri: process.env.DATABASE };
 
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(adapterConfig),
+  secureCookies: false,
   cookieSecret: 'travisgerrard',
   sessionStore: new MongoStore({ url: process.env.DATABASE }),
 
@@ -89,14 +92,31 @@ keystone.extendGraphQLSchema({
   ],
 });
 
-module.exports = {
-  keystone,
-  apps: [
-    new GraphQLApp(),
-    new AdminUIApp({
-      name: PROJECT_NAME,
-      enableDefaultRoute: true,
-      authStrategy,
-    }),
-  ],
+// module.exports = {
+//   keystone,
+//   apps: [
+//     new GraphQLApp(),
+//     new AdminUIApp({
+//       name: PROJECT_NAME,
+//       enableDefaultRoute: true,
+//       authStrategy,
+//     }),
+//   ],
+// };
+
+const apps = [
+  new GraphQLApp({
+    // apiPath: '/backend/admin/api',
+    // graphiqlPath: '/backend/admin/graphiql',
+  }),
+  new AdminUIApp({
+    authStrategy,
+    adminPath: '/admin',
+  }),
+];
+
+const configureExpress = (app) => {
+  app.set('trust proxy', 1);
 };
+
+export { keystone, apps, configureExpress };

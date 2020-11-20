@@ -21,7 +21,7 @@ const options = [
   { value: 7, label: 'canned & jarred goods' },
   { value: 8, label: 'oils, sauces & condiments' },
   { value: 9, label: 'ethnic' },
-  { value: 10, label: 'dairy & cheese' },
+  { value: 10, label: 'refrigerated' },
 ];
 
 export default {
