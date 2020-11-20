@@ -29,7 +29,7 @@ const adapterConfig = { mongoUri: process.env.DATABASE };
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(adapterConfig),
-  secureCookies: false,
+  cookie: { secure: false },
   cookieSecret: 'travisgerrard',
   sessionStore: new MongoStore({ url: process.env.DATABASE }),
 
