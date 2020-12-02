@@ -31,6 +31,8 @@ export default {
     groceryList: { type: Relationship, ref: 'GroceryList.author', many: true },
     mealList: { type: Relationship, ref: 'MealList.author', many: true },
     madeMeals: { type: Relationship, ref: 'MadeMeal.author', many: true },
+    follows: { type: Relationship, ref: 'User.followers', many: true },
+    followers: { type: Relationship, ref: 'User.follows', many: true },
   },
 
   access: {
