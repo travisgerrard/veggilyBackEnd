@@ -82,7 +82,7 @@ keystone.extendGraphQLSchema({
     },
     {
       schema:
-        'addGroceryList(ingredient: String!, amount: String!): GroceryList',
+        'addGroceryList(ingredient: String!, amount: String!, mealId: ID): GroceryList',
       resolver: mutations.addGroceryList,
     },
     {

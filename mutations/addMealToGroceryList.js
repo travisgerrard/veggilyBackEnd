@@ -1,10 +1,10 @@
-import { gql } from "apollo-server-express";
+import { gql } from 'apollo-server-express';
 
 export async function addMealToGroceryList(parent, args, context, info) {
   const { id: userId } = context.authedItem;
   console.log(userId);
   if (!userId) {
-    throw new Error("You must be signed in soooon");
+    throw new Error('You must be signed in soooon');
   }
 
   const {
@@ -39,16 +39,21 @@ export async function addMealToGroceryList(parent, args, context, info) {
     variables: { id: args.mealId },
   });
 
-  console.log(Meal);
-
-
   const { ingredientList } = Meal;
 
   ingredientList.forEach(async (item) => {
     await context.executeGraphQL({
       query: gql`
-        mutation ADD_GROCERY_LIST($ingredient: String!, $amount: String!) {
-          addGroceryList(ingredient: $ingredient, amount: $amount) {
+        mutation ADD_GROCERY_LIST(
+          $ingredient: String!
+          $amount: String!
+          $mealId: ID
+        ) {
+          addGroceryList(
+            ingredient: $ingredient
+            amount: $amount
+            mealId: $mealId
+          ) {
             id
           }
         }
@@ -56,6 +61,7 @@ export async function addMealToGroceryList(parent, args, context, info) {
       variables: {
         ingredient: item.ingredient.name,
         amount: item.amount.name,
+        mealId: args.mealId,
       },
     });
   });
