@@ -32,6 +32,7 @@
     "@keystonejs/fields-wysiwyg-tinymce": "*",
     "@keystonejs/file-adapters": "*",
     "@keystonejs/keystone": "*",
+    "@keystonejs/list-plugins": "^7.1.5",
     "@keystonejs/session": "*",
     "apollo-server-express": "*",
     "connect-mongo": "^3.2.0",
