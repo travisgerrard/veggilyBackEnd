@@ -53,6 +53,8 @@ export async function addGroceryList(parent, args, context, info) {
     ingredient = createIngredient;
   }
 
+  console.log(ingredient);
+
   //4 Query to see if amount exsits already
   const {
     data: { allAmounts },
@@ -102,6 +104,32 @@ export async function addGroceryList(parent, args, context, info) {
       data: { createGroceryList },
     } = await context.executeGraphQL({
       query: gql`
+        fragment IngredientFragment on Ingredient {
+          id
+          name
+          category
+        }
+
+        fragment AmountFragment on Amount {
+          id
+          name
+        }
+
+        fragment GroceryListFragment on GroceryList {
+          id
+          author {
+            id
+          }
+          ingredient {
+            ...IngredientFragment
+          }
+          amount {
+            ...AmountFragment
+          }
+          isCompleted
+          dateCompleted
+        }
+
         mutation CREATE_GROCERYLIST_MUTATION(
           $ingredientId: ID!
           $amountId: ID!
@@ -116,14 +144,14 @@ export async function addGroceryList(parent, args, context, info) {
               meal: { connect: { id: $mealId } }
             }
           ) {
-            id
+            ...GroceryListFragment
           }
         }
       `,
       variables: {
         ingredientId: ingredient.id,
         amountId: amount.id,
-        userId,
+        userId: userId,
         mealId: args.mealId,
       },
     });
@@ -133,6 +161,32 @@ export async function addGroceryList(parent, args, context, info) {
       data: { createGroceryList },
     } = await context.executeGraphQL({
       query: gql`
+        fragment IngredientFragment on Ingredient {
+          id
+          name
+          category
+        }
+
+        fragment AmountFragment on Amount {
+          id
+          name
+        }
+
+        fragment GroceryListFragment on GroceryList {
+          id
+          author {
+            id
+          }
+          ingredient {
+            ...IngredientFragment
+          }
+          amount {
+            ...AmountFragment
+          }
+          isCompleted
+          dateCompleted
+        }
+
         mutation CREATE_GROCERYLIST_MUTATION(
           $ingredientId: ID!
           $amountId: ID!
@@ -145,14 +199,14 @@ export async function addGroceryList(parent, args, context, info) {
               author: { connect: { id: $userId } }
             }
           ) {
-            id
+            ...GroceryListFragment
           }
         }
       `,
       variables: {
         ingredientId: ingredient.id,
         amountId: amount.id,
-        userId,
+        userId: userId,
       },
     });
     return createGroceryList;

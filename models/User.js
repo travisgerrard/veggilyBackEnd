@@ -6,6 +6,7 @@ import {
   Select,
 } from '@keystonejs/fields';
 import { userIsAdmin, userCanAccessUsers } from '../utils/access';
+const { atTracking } = require('@keystonejs/list-plugins');
 
 export default {
   fields: {
@@ -34,6 +35,7 @@ export default {
     follows: { type: Relationship, ref: 'User.followers', many: true },
     followers: { type: Relationship, ref: 'User.follows', many: true },
   },
+  plugins: [atTracking()],
 
   access: {
     // anyone should be able to create a user (sign up)

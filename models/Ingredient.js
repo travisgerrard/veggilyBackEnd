@@ -2,6 +2,7 @@ import { Text, Relationship, Select } from '@keystonejs/fields';
 import { userIsAdminOrOwner, userCanUpdateItem } from '../utils/access';
 import { CloudinaryImage } from '@keystonejs/fields-cloudinary-image';
 import { CloudinaryAdapter } from '@keystonejs/file-adapters';
+const { atTracking } = require('@keystonejs/list-plugins');
 
 const cloudinaryAdapter = new CloudinaryAdapter({
   cloudName: process.env.CLOUDINARY_CLOUD_NAME,
@@ -34,10 +35,5 @@ export default {
       adapter: cloudinaryAdapter,
     },
   },
-  // access: {
-  //   create: true,
-  //   read: true,
-  //   update: userCanUpdateItem,
-  //   delete: userIsAdminOrOwner,
-  // },
+  plugins: [atTracking()],
 };

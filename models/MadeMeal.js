@@ -1,6 +1,7 @@
 import { Text, Relationship, Checkbox, CalendarDay } from '@keystonejs/fields';
 import { CloudinaryImage } from '@keystonejs/fields-cloudinary-image';
 import { CloudinaryAdapter } from '@keystonejs/file-adapters';
+const { atTracking } = require('@keystonejs/list-plugins');
 
 const cloudinaryAdapter = new CloudinaryAdapter({
   cloudName: process.env.CLOUDINARY_CLOUD_NAME,
@@ -25,4 +26,5 @@ export default {
       adapter: cloudinaryAdapter,
     },
   },
+  plugins: [atTracking()],
 };

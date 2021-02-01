@@ -1,15 +1,11 @@
 import { Text, Relationship } from '@keystonejs/fields';
-import { userIsAdminOrOwner, userCanUpdateItem } from '../utils/access';
+
+const { atTracking } = require('@keystonejs/list-plugins');
 
 export default {
   fields: {
     name: { type: Text, isUnique: true, isRequired: true },
     meal: { type: Relationship, ref: 'Meal', many: true },
   },
-  // access: {
-  //   create: true,
-  //   read: true,
-  //   update: userCanUpdateItem,
-  //   delete: userIsAdminOrOwner,
-  // },
+  plugins: [atTracking()],
 };

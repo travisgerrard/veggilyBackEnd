@@ -1,4 +1,5 @@
 import { Relationship, Checkbox, DateTime } from '@keystonejs/fields';
+const { atTracking } = require('@keystonejs/list-plugins');
 
 export default {
   fields: {
@@ -15,4 +16,5 @@ export default {
       yearPickerType: 'auto',
     },
   },
+  plugins: [atTracking()],
 };

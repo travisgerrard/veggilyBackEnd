@@ -1,4 +1,5 @@
 import { Relationship } from '@keystonejs/fields';
+const { atTracking } = require('@keystonejs/list-plugins');
 
 export default {
   fields: {
@@ -6,4 +7,5 @@ export default {
     amount: { type: Relationship, ref: 'Amount', many: false },
     meal: { type: Relationship, ref: 'Meal.ingredientList', many: true },
   },
+  plugins: [atTracking()],
 };
